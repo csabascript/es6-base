@@ -1,0 +1,28 @@
+{
+  "name": "currency-exchange",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --progress",
+    "test": "NODE_ENV=testing karma start --single-run",
+    "test:watch": "NODE_ENV=testing karma start"
+  },
+  "author": "Csaba Balint",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "eslint": "^3.19.0",
+    "eslint-loader": "^1.7.1",
+    "jasmine-core": "^2.6.1",
+    "karma": "^1.7.0",
+    "karma-chrome-launcher": "^2.1.1",
+    "karma-coverage-istanbul-reporter": "^1.2.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-mocha-reporter": "^2.2.3",
+    "karma-webpack-preprocessor": "^1.0.1",
+    "webpack": "^2.5.1"
+  }
+}
