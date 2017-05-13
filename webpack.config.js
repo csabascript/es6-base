@@ -46,8 +46,18 @@ module.exports = {
   },
 
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
+    contentBase: path.join(__dirname),
+    publicPath: "/dist/",
     compress: true,
-    port: 9000
-  }
+    port: 9000,
+    overlay: {
+      warnings: true,
+      errors: true
+    },
+    stats: {
+      chunks: false
+    }
+  },
+
+  devtool: "source-map"
 };
