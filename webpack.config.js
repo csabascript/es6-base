@@ -36,7 +36,18 @@ module.exports = {
         use: [{
           loader: 'babel-loader'
         }]
+      },
+      {
+        test: /\.js$/,
+        exclude: /(\/node_modules\/|test\.js|\.spec\.js$)/,
+        loader: 'istanbul-instrumenter-loader'
       }
     ]
+  },
+
+  devServer: {
+    contentBase: path.join(__dirname, "dist"),
+    compress: true,
+    port: 9000
   }
 };

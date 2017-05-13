@@ -2,13 +2,13 @@
 
 class Base {
   get() {
-    return 'pina'
+    return 'base'
   }
 }
 
 class Test extends Base {
   get() {
-    return super.get();
+    return [super.get(), 'test'].join('');
   }
 }
 
