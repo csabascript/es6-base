@@ -1,9 +1,11 @@
+/* global module, require, __dirname */
+
 'use strict';
 
 const path = require('path');
 
 module.exports = {
-  entry: './es6/index.js',
+  entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -21,35 +23,30 @@ module.exports = {
             loader: 'eslint-loader',
             options: {
               failOnError: true,
-              failOnWarning: true,
-              outputReport: {
-                filePath: 'checkstyle.xml',
-                formatter: require('eslint/lib/formatters/checkstyle')
-              }
+              failOnWarning: true
             }
           }
         ]
       },
       {
         test: /\.js$/,
-        exclude: /(\/node_modules\/|test\.js|\.spec\.js$)/,
+        exclude: /(node_modules|bower_components)/,
         use: [{
-          loader: 'babel-loader'
+          loader: 'babel-loader',
+          options: {
+            // https://github.com/babel/babel-loader#options
+            cacheDirectory: true,
+          }
         }]
-      },
-      {
-        test: /\.js$/,
-        exclude: /(\/node_modules\/|test\.js|\.spec\.js$)/,
-        loader: 'istanbul-instrumenter-loader'
       }
     ]
   },
 
   devServer: {
+    publicPath: "/dist",
     contentBase: path.join(__dirname),
-    publicPath: "/dist/",
-    compress: true,
     port: 9000,
+    compress: false,
     overlay: {
       warnings: true,
       errors: true
@@ -59,5 +56,5 @@ module.exports = {
     }
   },
 
-  devtool: "source-map"
+  devtool: 'source-map'
 };

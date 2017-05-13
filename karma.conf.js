@@ -4,8 +4,22 @@
 // Generated on Wed May 10 2017 22:18:33 GMT+0100 (BST)
 
 const path = require('path');
+const webpackModule = require('./webpack.config.js').module;
 
-module.exports = function(config) {
+webpackModule.rules.push(
+  {
+    test: /\.js$/,
+    include: path.resolve('src/'),
+    use: [{
+      loader: 'istanbul-instrumenter-loader',
+      query: {
+        esModules: true
+      }
+    }]
+  }
+);
+
+module.exports = function (config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -15,28 +29,26 @@ module.exports = function(config) {
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
 
-
     // list of files / patterns to load in the browser
     files: [
-      './es6/*.js',
-      './es6/*.spec.js'
+      'test/index.spec.js'
     ],
 
-    webpack: require("./webpack.config.js"),
+    webpack: {
+      module: webpackModule
+    },
 
     webpackMiddleware: {
-      stats: "errors-only"
+      stats: 'errors-only'
     },
 
     // list of files to exclude
-    exclude: [
-    ],
-
+    exclude: [],
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      "index.spec.js": ["webpack"]
+      'test/index.spec.js': ['webpack']
     },
 
     // test results reporter to use
@@ -45,23 +57,23 @@ module.exports = function(config) {
     reporters: ['mocha', 'coverage-istanbul'],
 
     coverageIstanbulReporter: {
-      reports: ['html', 'text-summary'],
-      dir: './coverage',
+      reports: ['html'],
+      dir: 'coverage',
       fixWebpackSourcePaths: true,
-      // skipFilesWithNoCoverage: false,
-      // 'report-config': {
-      //   html: {
-      //     subdir: 'html'
-      //   }
-      // },
-      // thresholds: {
-      //   global: {
-      //     statements: 100,
-      //     lines: 100,
-      //     branches: 100,
-      //     functions: 100
-      //   }
-      // }
+      skipFilesWithNoCoverage: false,
+      'report-config': {
+        html: {
+          subdir: 'html'
+        }
+      },
+      thresholds: {
+        global: {
+          statements: 70,
+          lines: 70,
+          branches: 70,
+          functions: 70
+        }
+      }
     },
 
     // web server port
@@ -79,7 +91,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['ChromeCanary'],
+    browsers: ['PhantomJS'],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits

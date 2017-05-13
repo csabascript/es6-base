@@ -12,4 +12,4 @@ class Test extends Base {
   }
 }
 
-new Test();
+export default Test;

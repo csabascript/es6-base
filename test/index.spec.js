@@ -2,6 +2,8 @@
 
 'use strict';
 
+import Test from '../src/index'
+
 describe('index', () => {
   it('should', () => {
     let x = new Test();
@@ -9,3 +11,4 @@ describe('index', () => {
     expect(x.get()).toBe('basetest');
   })
 });
+
