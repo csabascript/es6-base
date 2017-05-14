@@ -1,15 +1,23 @@
+/* global window */
 'use strict';
 
-class Base {
-  get() {
-    return 'base'
-  }
-}
+import PresenterFactory from './presenter/PresenterFactory';
 
-class Test extends Base {
-  get() {
-    return [super.get(), 'test'].join('');
-  }
-}
+((document) => {
+  let presenterFactory = new PresenterFactory();
 
-export default Test;
+  let basketPresenter = presenterFactory.getNewInstance('basket', document.getElementById('basket'));
+  let itemListPresenter = presenterFactory.getNewInstance('itemlist', document.getElementById('item-list'));
+
+  itemListPresenter.init();
+  basketPresenter.init();
+
+  itemListPresenter
+    .subscribe('add-to-basket-click', (e) => basketPresenter.add(e.data));
+
+  basketPresenter
+    .subscribe('increase-from-basket-click', (e) => basketPresenter.add(e.data.item, 1))
+    .subscribe('decrease-from-basket-click', (e) => basketPresenter.remove(e.data.item, 1))
+    .subscribe('remove-from-basket-click', (e) => basketPresenter.remove(e.data.item, e.data.quantity));
+
+})(window.document);
