@@ -5,9 +5,7 @@ import ItemViewModel from './ItemViewModel';
 
 export default class ItemListViewModel extends DomEventViewModel {
   render(itemList) {
-    let el = this.createElement('div');
-
-    el.className = 'item-list';
+    let el = this.createElement('ul', 'list-group');
 
     itemList.items.forEach((item) => {
       let itemViewModel = new ItemViewModel();

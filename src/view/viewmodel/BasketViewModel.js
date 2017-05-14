@@ -5,11 +5,9 @@ import BasketItemViewModel from './BasketItemViewModel';
 
 export default class BasketViewModel extends DomEventViewModel {
   render(basket) {
-    let el = this.createElement('div');
+    let el = this.createElement('ul', 'list-group');
     let sum = this.createElement('p');
     let value = 0;
-
-    el.className = 'basket';
 
     Object.keys(basket.items).forEach((id) => {
       let item = basket.items[id];

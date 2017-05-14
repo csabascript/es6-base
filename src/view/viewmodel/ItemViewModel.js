@@ -4,22 +4,15 @@ import DomEventViewModel from './DomEventViewModel';
 
 export default class ItemViewModel extends DomEventViewModel {
   render(item) {
-    let el = this.createElement('div');
+    let el = this.createElement('li', 'list-group-item list-group-item-action');
     let name = this.createElement('span');
     let value = this.createElement('span');
-    let addButton = this.createElement('button');
+    let addButton = this.createButton('+');
 
-    el.className = 'item';
-    name.className = 'item-name';
-    value.className = 'item-value';
+    name.innerText = item.name;
+    value.innerText = item.value;
 
-    name.innerHTML = item.name;
-    value.innerHTML = item.value;
-    addButton.innerHTML = '+';
-
-    el.appendChild(name);
-    el.appendChild(value);
-    el.appendChild(addButton);
+    this.appendChildren(el, [name, value, addButton]);
 
     this.proxy(addButton, 'click', 'add-to-basket-click');
 
