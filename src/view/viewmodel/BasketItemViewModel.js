@@ -1,6 +1,9 @@
 'use strict';
 
 import DomEventViewModel from './DomEventViewModel';
+import PriceDecorator from '../decorator/PriceDecorator';
+
+const priceDecorator = new PriceDecorator();
 
 export default class BasketItemViewModel extends DomEventViewModel {
   render({basketItem, currency}) {
@@ -13,11 +16,13 @@ export default class BasketItemViewModel extends DomEventViewModel {
     let decreaseButton = this.createButton('-', 'btn-warning');
     let removeButton = this.createButton('x', 'btn-danger');
     let buttonGroup = this.createElement('div', 'btn-group');
+    // let exchangedPrice = priceDecorator.decorate(currency, basketItem.item);
+    let calculatedPrice = priceDecorator.calculate(currency, basketItem.item);
 
     name.innerText = basketItem.item.name;
-    price.innerText = [currency.symbol, basketItem.item.price].join('');
+    price.innerText = priceDecorator.decorate(currency, calculatedPrice);
     quantity.innerText = basketItem.quantity;
-    sum.innerText = basketItem.item.price * basketItem.quantity;
+    sum.innerText = priceDecorator.decorate(currency, calculatedPrice * basketItem.quantity);
 
     this.appendChildren(buttonGroup, [decreaseButton, increaseButton, removeButton]);
     this.appendChildren(el, [name, price, quantity, sum, buttonGroup]);

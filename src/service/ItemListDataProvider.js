@@ -1,25 +1,40 @@
 'use strict';
 
-
+/**
+ *
+ * Peas – 95p per bag
+ * Eggs – £2.10 per dozen
+ * Milk – £1.30 per bottle
+ * Beans – 73p per can
+ *
+ */
 export default class ItemListDataProvider {
   get() {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       resolve([
         {
-          name: 'item1',
-          price: 2.0
+          name: 'Peas',
+          price: 0.95,
+          currency: 'GBP',
+          unit: 'bag'
         },
         {
-          name: 'item2',
-          price: 1.0
+          name: 'Eggs',
+          price: 2.10,
+          currency: 'GBP',
+          unit: 'dozen'
         },
         {
-          name: 'item3',
-          price: 3.0
+          name: 'Milk',
+          price: 1.30,
+          currency: 'GBP',
+          unit: 'bottle'
         },
         {
-          name: 'item4',
-          price: 4.0
+          name: 'Beans',
+          price: 0.73,
+          currency: 'GBP',
+          unit: 'can'
         }
       ])
     })

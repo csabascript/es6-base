@@ -6,18 +6,15 @@ export default class CurrencyDataProvider {
       resolve([
         {
           name: 'pound',
-          short: 'gbp',
-          symbol: '£'
-        },
-        {
-          name: 'euro',
-          short: 'eur',
-          symbol: '€'
+          short: 'GBP',
+          symbol: '£',
+          exchangeRate: 1
         },
         {
           name: 'dollar',
-          short: 'usd',
-          symbol: '$'
+          short: 'USD',
+          symbol: '$',
+          exchangeRate: 1.5
         }
       ])
     })

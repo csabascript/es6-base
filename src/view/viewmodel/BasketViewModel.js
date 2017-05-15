@@ -2,6 +2,9 @@
 
 import DomEventViewModel from './DomEventViewModel';
 import BasketItemViewModel from './BasketItemViewModel';
+import PriceDecorator from '../decorator/PriceDecorator';
+
+const priceDecorator = new PriceDecorator();
 
 export default class BasketViewModel extends DomEventViewModel {
   render({basket, currency}) {
@@ -17,11 +20,11 @@ export default class BasketViewModel extends DomEventViewModel {
       basketItemViewModel.subscribe('decrease-from-basket-click', () => this.emit('decrease-from-basket-click', basketItem));
       basketItemViewModel.subscribe('increase-from-basket-click', () => this.emit('increase-from-basket-click', basketItem));
 
-      value += basketItem.item.price * basketItem.quantity;
+      value += priceDecorator.calculate(currency, basketItem.item) * basketItem.quantity;
       el.appendChild(basketItemViewModel.render({basketItem, currency}));
     });
 
-    sum.innerText = [currency.symbol, value].join('');
+    sum.innerText = priceDecorator.decorate(currency, value.toFixed(2));
     el.appendChild(sum);
     return el;
   }

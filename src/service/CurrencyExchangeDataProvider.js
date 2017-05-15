@@ -2,6 +2,21 @@
 
 import AjaxService from './AjaxService';
 
-export default class CurrencyExchangeDataProvider extends AjaxService {
+const API_KEY = '35e026709372ce02e797b1e013aa4137';
 
+export default class CurrencyExchangeDataProvider extends AjaxService {
+  constructor(baseCurrency) {
+    super();
+    this.baseCurrency = baseCurrency;
+    this.baseUrl = 'http://apilayer.net/api/live';
+  }
+
+  get(to) {
+    // worst free api ever
+    let url = this.baseUrl + '?access_key=' + API_KEY + '&source=' + this.baseCurrency + '&currencies=' + to;
+
+    return new Promise((resolve, reject) => {
+      super.get(url).then(response => resolve(JSON.parse(response)));
+    });
+  }
 }
