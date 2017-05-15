@@ -24,7 +24,7 @@ export default class BasketViewModel extends DomEventViewModel {
       el.appendChild(basketItemViewModel.render({basketItem, currency}));
     });
 
-    sum.innerText = priceDecorator.decorate(currency, value.toFixed(2));
+    sum.innerText = 'Total: ' + priceDecorator.decorate(currency, value.toFixed(2));
     el.appendChild(sum);
     return el;
   }

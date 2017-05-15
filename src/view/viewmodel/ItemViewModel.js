@@ -11,11 +11,9 @@ export default class ItemViewModel extends DomEventViewModel {
     let calculatedPrice = priceDecorator.calculate(currency, item);
 
     let name = this.createSpan(item.name);
-    let unit = this.createSpan(item.unit);
-    let price = this.createSpan(priceDecorator.decorate(currency, calculatedPrice));
+    let price = this.createSpan([priceDecorator.decorate(currency, calculatedPrice), item.unit].join('/'));
     let addButton = this.createButton('+');
-
-    this.appendChildren(el, [addButton, name, price, unit]);
+    this.appendChildren(el, [addButton, name, price]);
 
     this.proxy(addButton, 'click', 'add-to-basket-click');
 

@@ -11,11 +11,11 @@ export default class ViewModel {
     return el;
   }
 
-  createSpan(text, className) {
+  createSpan(text, className = '') {
     let el = this.createElement('span');
     el.className = className;
     el.innerText = text;
-    return el;
+    return bootstrapDecorator.badge(el);
   }
 
   createButton(text, className) {

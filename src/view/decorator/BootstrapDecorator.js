@@ -6,4 +6,9 @@ export default class BootstrapDecorator {
     el.setAttribute('type', 'button');
     return el;
   }
+
+  badge(el) {
+    el.className += ' badge badge-default badge-pill';
+    return el;
+  }
 }
