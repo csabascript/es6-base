@@ -1,3 +1,4 @@
+/* global document */
 'use strict';
 
 import BootstrapDecorator from '../decorator/BootstrapDecorator';
@@ -52,10 +53,9 @@ export default class ViewModel {
   }
 
   /**
-   * @override
-   * @param model {Object}
+   * @throws Error
    */
-  render(model) {
+  render() {
     throw new Error('Render function is not implemented');
   }
 }
