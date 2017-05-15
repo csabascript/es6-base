@@ -23,9 +23,6 @@ export default class CurrencyPresenter extends Presenter {
 
       this.exchangeProvider.get([...cs].join(',')).then(response => {
         currencies.map(currency => currency.rate = response.quotes);
-
-        console.log(currencies);
-
         this.render(currencies);
       });
     });
