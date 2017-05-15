@@ -2,6 +2,7 @@
 
 import DomEventViewModel from './DomEventViewModel';
 import PriceDecorator from '../decorator/PriceDecorator';
+import EventEnum from '../../model/EventEnum';
 
 const priceDecorator = new PriceDecorator();
 
@@ -15,7 +16,7 @@ export default class ItemViewModel extends DomEventViewModel {
     let addButton = this.createButton('+');
     this.appendChildren(el, [addButton, name, price]);
 
-    this.proxy(addButton, 'click', 'add-to-basket-click');
+    this.proxy(addButton, 'click', EventEnum.ADD_TO_BASKET_BUTTON_CLICK);
 
     return el;
   }

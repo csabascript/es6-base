@@ -2,6 +2,7 @@
 
 import DomEventViewModel from './DomEventViewModel';
 import PriceDecorator from '../decorator/PriceDecorator';
+import EventEnum from '../../model/EventEnum';
 
 const priceDecorator = new PriceDecorator();
 
@@ -21,9 +22,9 @@ export default class BasketItemViewModel extends DomEventViewModel {
     this.appendChildren(buttonGroup, [decreaseButton, increaseButton, removeButton]);
     this.appendChildren(el, [buttonGroup, name, unit, price]);
 
-    this.proxy(decreaseButton, 'click', 'decrease-from-basket-click');
-    this.proxy(increaseButton, 'click', 'increase-from-basket-click');
-    this.proxy(removeButton, 'click', 'remove-from-basket-click');
+    this.proxy(decreaseButton, 'click', EventEnum.DECREASE_BASKET_ITEM_COUNT_BUTTON_CLICK);
+    this.proxy(increaseButton, 'click', EventEnum.INCREASE_BASKET_ITEM_COUNT_BUTTON_CLICK);
+    this.proxy(removeButton, 'click', EventEnum.REMOVE_FROM_BASKET_BUTTON_CLICK);
 
     return el;
   }

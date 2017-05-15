@@ -2,6 +2,7 @@
 'use strict';
 
 import PresenterFactory from './presenter/PresenterFactory';
+import EventEnum from './model/EventEnum';
 
 ((document) => {
   let presenterFactory = new PresenterFactory();
@@ -13,17 +14,17 @@ import PresenterFactory from './presenter/PresenterFactory';
   currencyPresenter.init();
 
   currencyPresenter
-    .subscribe('currency-button-click', (e) => {
+    .subscribe(EventEnum.CURRENCY_BUTTON_CLICK, (e) => {
       itemListPresenter.init(e.data);
       basketPresenter.init(e.data);
     });
 
   itemListPresenter
-    .subscribe('add-to-basket-click', (e) => basketPresenter.add(e.data));
+    .subscribe(EventEnum.ADD_TO_BASKET_BUTTON_CLICK, (e) => basketPresenter.add(e.data));
 
   basketPresenter
-    .subscribe('increase-from-basket-click', (e) => basketPresenter.add(e.data.item, 1))
-    .subscribe('decrease-from-basket-click', (e) => basketPresenter.remove(e.data.item, 1))
-    .subscribe('remove-from-basket-click', (e) => basketPresenter.remove(e.data.item, e.data.quantity));
+    .subscribe(EventEnum.INCREASE_BASKET_ITEM_COUNT_BUTTON_CLICK, (e) => basketPresenter.add(e.data.item, 1))
+    .subscribe(EventEnum.DECREASE_BASKET_ITEM_COUNT_BUTTON_CLICK, (e) => basketPresenter.remove(e.data.item, 1))
+    .subscribe(EventEnum.REMOVE_FROM_BASKET_BUTTON_CLICK, (e) => basketPresenter.remove(e.data.item, e.data.quantity));
 
 })(window.document);

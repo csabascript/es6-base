@@ -2,6 +2,7 @@
 
 import DomEventViewModel from './DomEventViewModel';
 import ItemViewModel from './ItemViewModel';
+import EventEnum from '../../model/EventEnum';
 
 export default class ItemListViewModel extends DomEventViewModel {
   render({itemList, currency}) {
@@ -9,7 +10,7 @@ export default class ItemListViewModel extends DomEventViewModel {
 
     itemList.items.forEach((item) => {
       let itemViewModel = new ItemViewModel();
-      itemViewModel.subscribe('add-to-basket-click', () => this.emit('add-to-basket-click', item));
+      itemViewModel.subscribe(EventEnum.ADD_TO_BASKET_BUTTON_CLICK, () => this.emit(EventEnum.ADD_TO_BASKET_BUTTON_CLICK, item));
       el.appendChild(itemViewModel.render({item, currency}));
     });
 
