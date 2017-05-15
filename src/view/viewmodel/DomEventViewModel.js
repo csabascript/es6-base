@@ -13,8 +13,8 @@ export default class DomEventViewModel extends ViewModel {
     this.ee.subscribe(event, cb, this);
   }
 
-  proxy(el, event, newEvent) {
-    el.addEventListener(event, (e) => this.emit(newEvent, e));
+  proxy(el, event, newEvent, data) {
+    el.addEventListener(event, (e) => this.emit(newEvent, data || e));
   }
 
   emit(event, data) {

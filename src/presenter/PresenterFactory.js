@@ -2,10 +2,12 @@
 
 import BasketPresenter from '../presenter/BasketPresenter';
 import ItemListPresenter from '../presenter/ItemListPresenter';
+import CurrencyPresenter from '../presenter/CurrencyPresenter';
 
 const PRESENTERS = {
   'basket': BasketPresenter,
-  'itemlist': ItemListPresenter
+  'itemlist': ItemListPresenter,
+  'currency': CurrencyPresenter
 };
 
 export default class PresenterFactory {

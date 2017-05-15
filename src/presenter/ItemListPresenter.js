@@ -14,9 +14,16 @@ export default class ItemListPresenter extends Presenter {
     this.viewModel = new ItemListViewModel();
   }
 
-  init() {
+  setCurrency(currency) {
+    this.currency = currency;
+    return this;
+  }
+
+  init(currency) {
+    this.setCurrency(currency);
+
     this.dataProvider.get().then((items) => {
-      this.render(itemListFactory.getNewInstance(items));
+      this.render({ itemList: itemListFactory.getNewInstance(items), currency: this.currency });
     });
   }
 }

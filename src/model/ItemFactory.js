@@ -3,7 +3,7 @@
 import Item from './Item';
 
 export default class ItemFactory {
-  getNewInstance(name, value) {
-    return new Item(name, value);
+  getNewInstance(name, price) {
+    return new Item(name, price);
   }
 }

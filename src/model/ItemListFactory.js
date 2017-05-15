@@ -8,7 +8,7 @@ const itemFactory = new ItemFactory();
 export default class ItemListFactory {
   getNewInstance(items) {
     let itemList = new ItemList();
-    items.map((item) => itemList.add(itemFactory.getNewInstance(item.name, item.value)));
+    items.map((item) => itemList.add(itemFactory.getNewInstance(item.name, item.price)));
     return itemList;
   }
 }

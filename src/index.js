@@ -8,9 +8,15 @@ import PresenterFactory from './presenter/PresenterFactory';
 
   let basketPresenter = presenterFactory.getNewInstance('basket', document.getElementById('basket'));
   let itemListPresenter = presenterFactory.getNewInstance('itemlist', document.getElementById('item-list'));
+  let currencyPresenter = presenterFactory.getNewInstance('currency', document.getElementById('currency'));
 
-  itemListPresenter.init();
-  basketPresenter.init();
+  currencyPresenter.init();
+
+  currencyPresenter
+    .subscribe('currency-button-click', (e) => {
+      itemListPresenter.init(e.data);
+      basketPresenter.init(e.data);
+    });
 
   itemListPresenter
     .subscribe('add-to-basket-click', (e) => basketPresenter.add(e.data));

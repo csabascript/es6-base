@@ -11,18 +11,24 @@ export default class BasketPresenter extends Presenter {
     this.viewModel = new BasketViewModel();
   }
 
-  init() {
+  setCurrency(currency) {
+    this.currency = currency;
+    return this;
+  }
+
+  init(currency) {
     // get stored basket data and render
-    this.render(this.basket);
+    this.setCurrency(currency);
+    this.render({ basket: this.basket, currency: this.currency });
   }
 
   add(item, quantity = 1) {
     this.basket.add(item, quantity);
-    this.render(this.basket);
+    this.render({ basket: this.basket, currency: this.currency });
   }
 
   remove(item, quantity) {
     this.basket.remove(item, quantity);
-    this.render(this.basket);
+    this.render({ basket: this.basket, currency: this.currency });
   }
 }

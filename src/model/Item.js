@@ -1,8 +1,8 @@
 'use strict';
 
 export default class Item {
-  constructor(name, value) {
+  constructor(name, price) {
     this.name = name;
-    this.value = value;
+    this.price = price;
   }
 }

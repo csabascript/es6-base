@@ -19,7 +19,7 @@ export default class Basket {
     if (this.items[item.name]) {
       this.items[item.name].quantity -= quantity;
 
-      if (this.items[item.name].quantity <=0) {
+      if (this.items[item.name].quantity <= 0) {
         delete this.items[item.name];
       }
     }
