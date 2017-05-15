@@ -11,6 +11,13 @@ export default class ViewModel {
     return el;
   }
 
+  createSpan(text, className) {
+    let el = this.createElement('span');
+    el.className = className;
+    el.innerText = text;
+    return el;
+  }
+
   createButton(text, className) {
     let el = this.createElement('button');
     el.innerText = text;
