@@ -5,6 +5,14 @@ import ItemViewModel from './ItemViewModel';
 import EventEnum from '../../model/EventEnum';
 
 export default class ItemListViewModel extends DomEventViewModel {
+
+  /**
+   *
+   * @override
+   * @param itemList {ItemList}
+   * @param currency {Object}
+   * @returns {DOMElement}
+   */
   render({itemList, currency}) {
     let el = this.createElement('ul', 'list-group');
 

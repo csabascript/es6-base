@@ -4,6 +4,12 @@ import DomEventViewModel from './DomEventViewModel';
 import EventEnum from '../../model/EventEnum';
 
 export default class CurrencyViewModel extends DomEventViewModel {
+
+  /**
+   * @override
+   * @param currencies {Array<Object>}
+   * @returns {DOMElement}
+   */
   render(currencies) {
     let el = this.createElement('div', 'btn-group');
 

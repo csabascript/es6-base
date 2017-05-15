@@ -1,12 +1,23 @@
 'use strict';
 
 export default class Presenter {
+
+  /**
+   * @constructor
+   * @param dom
+   */
   constructor(dom) {
     this.dom = dom;
     this.viewModel = null;
     this.model = null;
   }
 
+  /**
+   *
+   * @param event {String}
+   * @param cb {Function}
+   * @returns {Presenter}
+   */
   subscribe(event, cb) {
     if (!this.viewModel) {
       throw new Error('No view model is set to subscribe');
@@ -16,10 +27,20 @@ export default class Presenter {
     return this;
   }
 
+  /**
+   *
+   * @param event {String}
+   * @param data {Object}
+   */
   emit(event, data) {
     this.viewModel.emit(event, data);
   }
 
+  /**
+   *
+   * @param model {Object}
+   * @returns {Presenter}
+   */
   render(model) {
     if (!this.viewModel) {
       throw new Error('No view model is set to render');
@@ -35,6 +56,9 @@ export default class Presenter {
     return this;
   }
 
+  /**
+   * @void
+   */
   empty() {
     this.dom.innerHTML = '';
   }

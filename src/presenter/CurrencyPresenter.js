@@ -6,6 +6,12 @@ import CurrencyViewModel from '../view/viewmodel/CurrencyViewModel';
 import CurrencyExchangeDataProvider from '../service/CurrencyExchangeDataProvider';
 
 export default class CurrencyPresenter extends Presenter {
+
+  /**
+   * @constructor
+   * @override
+   * @param dom {DOMElement}
+   */
   constructor(dom) {
     super(dom);
     // overloaded constructor?
@@ -16,6 +22,9 @@ export default class CurrencyPresenter extends Presenter {
     this.viewModel = new CurrencyViewModel();
   }
 
+  /**
+   * @void
+   */
   init() {
     this.dataProvider.get().then((currencies) => {
       let cs = new Set();

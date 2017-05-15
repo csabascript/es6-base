@@ -11,6 +11,12 @@ const PRESENTERS = {
 };
 
 export default class PresenterFactory {
+
+  /**
+   *
+   * @param type {String}
+   * @param dom {DOMElement}
+   */
   getNewInstance(type, dom) {
     if (!PRESENTERS[type]) {
       throw new Error('Invalid presenter type');

@@ -1,6 +1,12 @@
 'use strict';
 
 export default class AjaxService {
+
+  /**
+   *
+   * @param url {String}
+   * @returns {Promise}
+   */
   get(url) {
     const method = 'GET';
 

@@ -1,6 +1,10 @@
 'use strict';
 
 export default class ItemList {
+
+  /**
+   * @constructor
+   */
   constructor() {
     this.items = [];
   }

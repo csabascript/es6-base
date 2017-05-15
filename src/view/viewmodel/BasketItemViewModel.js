@@ -7,6 +7,13 @@ import EventEnum from '../../model/EventEnum';
 const priceDecorator = new PriceDecorator();
 
 export default class BasketItemViewModel extends DomEventViewModel {
+
+  /**
+   * @override
+   * @param basketItem {BasketItem}
+   * @param currency {Object}
+   * @returns {DOMElement}
+   */
   render({basketItem, currency}) {
     let el = this.createElement('li', 'list-group-item list-group-action');
     let calculatedPrice = priceDecorator.calculate(currency, basketItem.item);

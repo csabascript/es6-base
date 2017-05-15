@@ -7,6 +7,13 @@ import EventEnum from '../../model/EventEnum';
 const priceDecorator = new PriceDecorator();
 
 export default class ItemViewModel extends DomEventViewModel {
+
+  /**
+   * @override
+   * @param item {Item}
+   * @param currency {Object}
+   * @returns {DOMElement}
+   */
   render({item, currency}) {
     let el = this.createElement('li', 'list-group-item list-group-item-action');
     let calculatedPrice = priceDecorator.calculate(currency, item);

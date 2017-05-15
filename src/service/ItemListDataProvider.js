@@ -9,6 +9,11 @@
  *
  */
 export default class ItemListDataProvider {
+
+  /**
+   *
+   * @returns {Promise}
+   */
   get() {
     return new Promise((resolve) => {
       resolve([

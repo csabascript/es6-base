@@ -1,6 +1,11 @@
 'use strict';
 
 export default class CurrencyDataProvider {
+
+  /**
+   *
+   * @returns {Promise}
+   */
   get() {
     return new Promise((resolve, reject) => {
       resolve([
