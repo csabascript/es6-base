@@ -9,3 +9,7 @@ require('./model/EventEmitter.spec');
 require('./model/Item.spec');
 require('./model/ItemFactory.spec');
 require('./model/ItemList.spec');
+
+require('./view/viewmodel/ViewModel.spec');
+
+require('./view/decorator/BootstrapDecorator.spec');

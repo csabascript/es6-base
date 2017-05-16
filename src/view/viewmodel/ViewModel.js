@@ -3,9 +3,15 @@
 
 import BootstrapDecorator from '../decorator/BootstrapDecorator';
 
-const bootstrapDecorator = new BootstrapDecorator();
-
 export default class ViewModel {
+
+  /**
+   * @constructor
+   */
+  constructor() {
+    this.bootstrapDecorator = new BootstrapDecorator();
+  }
+
   /**
    *
    * @param nodeType {String}
@@ -22,13 +28,13 @@ export default class ViewModel {
    *
    * @param text {String}
    * @param className {String}
-   * @returns {DOMElemnent}
+   * @returns {DOMElement}
    */
   createSpan(text, className = '') {
     let el = this.createElement('span');
     el.className = className;
     el.innerText = text;
-    return bootstrapDecorator.badge(el);
+    return this.bootstrapDecorator.badge(el);
   }
 
   /**
@@ -40,7 +46,7 @@ export default class ViewModel {
   createButton(text, className) {
     let el = this.createElement('button');
     el.innerText = text;
-    return bootstrapDecorator.button(el, className);
+    return this.bootstrapDecorator.button(el, className);
   }
 
   /**

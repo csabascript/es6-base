@@ -1,12 +1,12 @@
 /* global describe, it, expect, beforeEach */
 
-import BasketPresenter from '../../src/presenter/BasketPresenter';
+import Presenter from '../../src/presenter/Presenter';
 
-describe('BasketPresenter', () => {
+describe('Presenter', () => {
   let presenter;
 
   beforeEach(() => {
-    presenter = new BasketPresenter();
+    presenter = new Presenter();
   });
 
   it('should do smt', () => {
